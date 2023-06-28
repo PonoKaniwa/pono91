@@ -1,0 +1,42 @@
+<?php
+function saveFormData($name, $password, $gender, $occupation, $dob)
+{
+  // Connect to the database
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "registration_db";
+
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  // Prepare the SQL statement
+  $sql = "INSERT INTO form_data (name, password, gender, occupation, dob)
+          VALUES ('$name', '$password', '$gender', '$occupation', '$dob')";
+
+  // Execute the SQL statement
+  if ($conn->query($sql) === TRUE) {
+    echo "Data saved successfully.";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+
+  // Close the database connection
+  $conn->close();
+}
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Retrieve the form data
+  $name = $_POST['name'];
+  $password = $_POST['password'];
+  $gender = $_POST['gender'];
+  $occupation = $_POST['occupation'];
+  $dob = $_POST['dob'];
+
+  // Call the saveFormData function
+  saveFormData($name, $password, $gender, $occupation, $dob);
+}
+?>
