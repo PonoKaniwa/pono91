@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lobster&family=Rubik+Puddles&display=swap');
+
+/* CSS styling for the user profile */
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: lightslategray;
+  border: 3px solid black;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hover-pink {
+  color: black;
+  transition: color 0.3s;
+}
+
+.hover-pink:hover {
+  color: lightpink;
+}
+
+.profile {
+  width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-image:linear-gradient(217deg,#000,#fff);
+  text-align: center;
+}
+
+.custom-div{
+  width: 600px;
+  padding: 10px;
+
+}
+
+.profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  animation-name: rotateImage;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+.profile h2 {
+  margin-top: 0;
+}
+
+.profile p {
+  margin-bottom: 10px;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.gender-group {
+  margin-bottom: 15px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 200px;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.custom-button {
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  color: #000;
+  background: #fff;
+  line-height: 30px;
+  border-radius: 40px;
+  padding: 20px;
+  font-size: 30px;
+  font-weight: 600;
+  box-shadow: rgb(255, 198, 0) -2px -2px 0px 2px, rgb(246, 84, 174) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+  transition: all 0.2s;
+}
+
+.custom-button:hover {
+  box-shadow: rgb(246, 84, 174) -2px -2px 0px 2px, rgb(255, 198, 0) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+  transform: scale(1.01);
+}
+
+.gradient-background {
+  height: 100vh;
+  width: 100%;
+  background-image: url("./images/nature.jpg");
+  background-size: cover;
+}
+
+.menu {
+  margin-bottom: 20px;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.menu li {
+  margin-right: 10px;
+}
+
+.menu li:last-child {
+  margin-right: 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #555555;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: #FFECF6;
+}
+
+.share {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.share a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #555555;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.share a:hover {
+  color: #FFECF6;
+}
+
+.box {
+  text-align: left;
+}
+
+.contact-info {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.contact-info p span {
+  display: inline-block;
+  width: 100px;
+  text-align: left;
+}
+
+/* Define the animation keyframes */
+@keyframes rotateImage {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

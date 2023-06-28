@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--where all resources are linked-->
+  <title>Profile</title>
+
+  <!--add icon to tab-->
+  <link rel="icon" href="./images/tulips.png" type="image/x-icon">
+
+  <!--linking css file-->
+  <link rel="stylesheet" href="./styles.css">
+ 
+</head>
+
+<body class="gradient-background">
+  <div class="profile">
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li> <!-- Update the href value to your project page -->
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <img src="images/bunny.jpg" alt="Profile Picture">
+    <h2 style="font-family: 'Lobster', cursive;"><u>Pono Kaniwa</u></h2>
+    <div class="custom-div">
+        <section id="projects">
+        
+            <p class="profile"><strong>Projects</strong></p>
+            <br>
+            <div style="text-align: left;">
+            <li>Distributed Databases Systems</li>
+            <li>AI Vehicle Management Systems using Matlab</li>
+            <li>Research projects on cloud database</li>
+            <li>Website Development</li>
+            </div>
+            <br>
+           
+          </section>
+    
+          <button class="custom-button" onclick="redirectToAnotherPage()">Register for Services</button>
+    </div>
+ 
+  </div>
+  
+    <!-- Link your JavaScript file -->
+    <script>
+      function redirectToAnotherPage() {
+        window.location.href = "registration.html";
+      }
+  </script>
+</body>
+</html>

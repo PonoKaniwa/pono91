@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="register.css">
+  <style>
+    .suggestion {
+      cursor: pointer;
+      padding: 5px;
+    }
+    .search-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+    .search-label {
+      margin-right: 10px;
+    }
+    .search-textbox {
+      flex-grow: 1;
+      min-width: 300px;
+    }
+    .small-textbox {
+      width: 200px;
+    }
+    .suggestions-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .suggestions-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      width: 100%;
+      max-height: 150px;
+      overflow-y: auto;
+      z-index: 1;
+      padding: 5px;
+    }
+    .suggestions-content .suggestion-item {
+      padding: 3px 10px;
+      cursor: pointer;
+    }
+    .suggestions-content .suggestion-item:hover {
+      background-color: #e9e9e9;
+    }
+  </style>
+</head>
+<body>
+  <div class="gradient-background">
+    <div class="container">
+      <h2>Registration Form</h2>
+
+      <!-- form creation -->
+      <form action="save.php" method="post">
+        <div class="search-bar">
+          <label for="search" class="search-label">Search:</label>
+          <div class="suggestions-dropdown">
+            <input type="search" id="search" name="search" placeholder="Search" class="search-textbox" onkeyup="fetchSuggestions(this.value)">
+            <div class="suggestions-content" id="suggestions"></div>
+          </div>
+        </div>
+        <br><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required class="small-textbox"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+      
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+      
+        <div class="gender-group">
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div><br><br>
+      
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation" required><br><br>
+      
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+      
+
+        <div style="text-align: center;">
+          <button class="custom-button" type="submit">Submit</button>
+        </div>
+      </form>
+
+      <a href="index.html">Back</a>
+    </div>
+  </div>
+
+  <!--<script>
+    function fetchSuggestions(query) {
+      // Make an AJAX request to the server to fetch suggestions
+      // Here, you need to implement server-side code (e.g., PHP) to query the database and retrieve the suggested names based on the provided query
+      // Once you have the suggestions, you can update the suggestions dropdown with the results
+
+      // Example code using dummy suggestions
+      const dummySuggestions = ["John", "Jane", "Jonathan", "Jennifer", "James", "Jessica"];
+      const suggestionsContainer = document.getElementById("suggestions");
+      suggestionsContainer.innerHTML = ""; // Clear previous suggestions
+
+      // Loop through the suggestions and create suggestion items
+      dummySuggestions.forEach(suggestion => {
+        const suggestionItem = document.createElement("div");
+        suggestionItem.className = "suggestion-item";
+        suggestionItem.textContent = suggestion;
+        suggestionItem.addEventListener("click", () => {
+          document.getElementById("search").value = suggestion; // Set the selected suggestion in the search input field
+          suggestionsContainer.innerHTML = ""; // Clear the suggestions dropdown
+        });
+        suggestionsContainer.appendChild(suggestionItem);
+      });
+
+      if (query === "") {
+        suggestionsContainer.style.display = "none"; // Hide the suggestions dropdown if the query is empty
+      } else {
+        suggestionsContainer.style.display = "block"; // Show the suggestions dropdown
+      }
+    }
+  </script>-->
+
+  <script>
+    function getSuggestions() {
+      var searchInput = document.getElementById("search").value;
+      var suggestionsContainer = document.getElementById("suggestions-container");
+
+      // Clear previous suggestions
+      suggestionsContainer.innerHTML = "";
+
+      // Make an AJAX request to the server
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "search.php?search=" + searchInput, true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var suggestions = JSON.parse(xhr.responseText);
+
+          // Display suggestions in the dropdown
+          suggestions.forEach(function(suggestion) {
+            var suggestionElement = document.createElement("div");
+            suggestionElement.textContent = suggestion;
+            suggestionElement.className = "suggestion";
+            suggestionElement.onclick = function() {
+              // Fill the search bar with the selected suggestion
+              document.getElementById("search").value = suggestion;
+              // Clear the suggestions dropdown
+              suggestionsContainer.innerHTML = "";
+            };
+            suggestionsContainer.appendChild(suggestionElement);
+          });
+        }
+      };
+      xhr.send();
+    }
+    </script>
+
+</body>
+</html>

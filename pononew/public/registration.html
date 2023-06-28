@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="register.css">
+</head>
+<body>
+  <div class="gradient-background">
+    <div class="container">
+      <h2>Registration Form</h2>
+
+      <!-- form creation -->
+<form action="saveUser.php" method="post" onsubmit="return validateForm()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required><br><br>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required><br><br>
+
+  <div class="gender-group">
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+  </div><br><br>
+
+  <label for="occupation">Occupation:</label>
+  <input type="text" id="occupation" name="occupation" required><br><br>
+
+  <label for="dob">Date of Birth:</label>
+  <input type="date" id="dob" name="dob" required><br><br>
+
+  <button class="custom-button" type="Submit" value="Submit">Submit</button>
+</form>
+
+
+      <script>
+        function validateForm() {
+          // Get the form inputs
+          var name = document.getElementById('name');
+          var password = document.getElementById('password');
+          var gender = document.getElementById('gender');
+          var occupation = document.getElementById('occupation');
+          var dob = document.getElementById('dob');
+          
+          // Perform validation
+          if (name.value === "") {
+            alert("Please enter your name.");
+            name.focus();
+            return false;
+          }
+          
+          if (password.value === "") {
+            alert("Please enter a password.");
+            password.focus();
+            return false;
+          }
+          
+          if (gender.value === "") {
+            alert("Please select your gender.");
+            gender.focus();
+            return false;
+          }
+          
+          if (occupation.value === "") {
+            alert("Please enter your occupation.");
+            occupation.focus();
+            return false;
+          }
+          
+          if (dob.value === "") {
+            alert("Please enter your date of birth.");
+            dob.focus();
+            return false;
+          }
+          
+          // All validations passed, print the form values to console
+          printToConsole();
+          
+          // Prevent form submission
+          return false;
+        }
+        
+        function printToConsole() {
+          // Get the form values
+          var name = document.getElementById('name').value;
+          var password = document.getElementById('password').value;
+          var gender = document.getElementById('gender').value;
+          var occupation = document.getElementById('occupation').value;
+          var dob = document.getElementById('dob').value;
+          
+          // Print the form values to the console
+          console.log('Name:', name);
+          console.log('Password:', password);
+          console.log('Gender:', gender);
+          console.log('Occupation:', occupation);
+          console.log('Date of Birth:', dob);
+        }
+      </script>
+      
+    </div>
+  </div>
+</body>
+</html>
